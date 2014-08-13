@@ -1,0 +1,86 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string dayOfweek = Console.ReadLine();
+        double quantity1=double.Parse(Console.ReadLine());
+        string product1 = Console.ReadLine();
+        double quantity2 = double.Parse(Console.ReadLine());
+        string product2 = Console.ReadLine();
+        double quantity3 = double.Parse(Console.ReadLine());
+        string product3 = Console.ReadLine();
+        double totalPrice = 0;
+        quantity1=QuantityProducts(product1, quantity1);
+        quantity2 = QuantityProducts(product2, quantity2);
+        quantity3 = QuantityProducts(product3, quantity3);
+        if (product1 == "banana" && dayOfweek == "Thursday")
+        {
+            quantity1 -= quantity1 * 0.3;        
+        }
+        if (product2 == "banana" && dayOfweek == "Thursday")
+        {
+            quantity2 -= quantity2 * 0.3;
+        }
+        if (product3 == "banana" && dayOfweek == "Thursday")
+        {
+            quantity3 -= quantity3 * 0.3;
+        }
+        if ((product1 == "banana" || product1 == "orange" || product1 == "apple") && dayOfweek == "Tuesday")
+        {
+            quantity1 -= quantity1 * 0.2;
+        }
+        if ((product2 == "banana" || product2 == "orange" || product2 == "apple") && dayOfweek == "Tuesday")
+        {
+            quantity2 -= quantity2 * 0.2;
+        }
+        if ((product3 == "banana" || product3 == "orange" || product3 == "apple" )&& dayOfweek == "Tuesday")
+        {
+            quantity3 -= quantity3 * 0.2;
+        }
+        if ((product1 == "tomato" || product1 == "cucumber") && dayOfweek == "Wednesday")
+        {
+            quantity1 -= quantity1 * 0.1;
+        }
+        if ((product2 == "tomato" || product2 == "cucumber") && dayOfweek == "Wednesday")
+        {
+            quantity2 -= quantity2 * 0.1;
+        }
+        if ((product3 == "tomato" || product3 == "cucumber" )&& dayOfweek == "Wednesday")
+        {
+            quantity3 -= quantity3 * 0.1;
+        }
+        totalPrice = quantity1 + quantity2 + quantity3;
+        if (dayOfweek=="Friday")
+	    {
+		   Console.WriteLine("{0:F2}", totalPrice - totalPrice*0.10);
+	    }
+        else if (dayOfweek=="Sunday")
+	    {
+		   Console.WriteLine("{0:F2}", totalPrice - totalPrice * 0.05);
+	    }
+        else
+	    {
+            Console.WriteLine("{0:F2}", totalPrice);
+	    }
+    }
+    private static double QuantityProducts(string product, double quantity)
+    {
+        switch (product)
+        {
+            case "banana": quantity = quantity * 1.8;
+                break;
+            case "cucumber": quantity = quantity * 2.75;
+                break;
+            case "tomato": quantity = quantity * 3.20;
+                break;
+            case "orange": quantity = quantity * 1.6;
+                break;
+            case "apple": quantity = quantity * 0.86;
+                break;
+        }
+        return quantity;
+    }
+}
+
